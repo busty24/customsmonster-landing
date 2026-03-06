@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EU Customs Declaration Software for Brokers | Customs Monster</title>
+  <meta name="description" content="Customs Monster automates EU customs declarations end-to-end. AI document extraction from any format, TARIC classification with confidence scores and written explanations, and EDS-ready XML output. Built for EU customs brokers." />
+  <meta name="keywords" content="EU customs declaration software, customs broker software, TARIC classification AI, automated customs declarations Europe, EDS customs software, HS code classification automation, customs document extraction" />
+  <link rel="canonical" href="https://customsmonster.eu/" />
+  <meta property="og:title" content="EU Customs Declaration Software for Brokers | Customs Monster" />
+  <meta property="og:description" content="Turn shipping documents into filed EU customs declarations. AI extraction, TARIC classification with explanations, EDS-ready output." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://customsmonster.eu/" />
+  <meta name="robots" content="index, follow" />
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Customs Monster","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"AI-powered EU customs declaration software for customs brokers. Reads shipping documents in any format, classifies goods to TARIC codes with confidence scores and explanations, resolves cross-document conflicts, and outputs EDS-ready XML or JSON.","url":"https://customsmonster.eu","offers":{"@type":"Offer","availability":"https://schema.org/InStock","areaServed":{"@type":"Place","name":"European Union"}},"featureList":["AI document extraction from PDF, Excel, images, XML","TARIC classification with confidence scores and explanations","Multi-document conflict resolution","Self-improving TARIC knowledge base","EDS-ready XML and JSON output","Role-based multi-user team access"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Customs Monster?","acceptedAnswer":{"@type":"Answer","text":"Customs Monster is EU customs declaration software for customs brokers. It reads your shipping documents, extracts every relevant data field, classifies goods to TARIC codes with confidence scores and written explanations, and outputs EDS-ready XML or JSON for submission to your national customs portal."}},{"@type":"Question","name":"Which document formats does Customs Monster support?","acceptedAnswer":{"@type":"Answer","text":"PDF, Excel (.xls, .xlsx, .xlsm, .xlsb), OpenDocument (.odf, .ods, .odt), images (.jpg, .jpeg, .png, .tiff), and XML. No reformatting or templates required."}},{"@type":"Question","name":"How does TARIC classification work in Customs Monster?","acceptedAnswer":{"@type":"Answer","text":"The system reads product descriptions from all uploaded documents, cross-references the EU TARIC tariff database, and returns the most appropriate TARIC code with a confidence score and a written explanation of why the heading applies."}},{"@type":"Question","name":"What happens when documents contain conflicting data?","acceptedAnswer":{"@type":"Answer","text":"When two documents carry different values for the same field, the system flags the conflict and identifies which document each value came from. You select the correct value before the declaration is finalised."}},{"@type":"Question","name":"Which EU customs systems does Customs Monster support?","acceptedAnswer":{"@type":"Answer","text":"Currently integrated with Latvia's EDS for both import and export declarations. XML for exports, JSON for imports. Built for expansion to additional EU member state systems."}},{"@type":"Question","name":"Is Customs Monster GDPR compliant?","acceptedAnswer":{"@type":"Answer","text":"The platform operates within EU infrastructure. Your documents are not used to train AI models. Data is fully isolated per organisation account."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to automate EU customs declarations with Customs Monster","description":"Turn your shipping documents into a compliant EU customs declaration in four steps.","totalTime":"PT1M","step":[{"@type":"HowToStep","position":1,"name":"Upload your shipping documents","text":"Drop your invoice, AWB, packing list, or any other documents. PDF, Excel, images, XML. No templates or reformatting required."},{"@type":"HowToStep","position":2,"name":"AI extracts all data and flags conflicts","text":"Every field is extracted from every document simultaneously. Where documents disagree, the conflict is flagged with the source document identified."},{"@type":"HowToStep","position":3,"name":"Review TARIC codes and resolve conflicts","text":"Each product line arrives with a TARIC code, confidence score, and written explanation. Accept, reject, or override. Resolve flagged conflicts before finalising."},{"@type":"HowToStep","position":4,"name":"Download EDS-ready output and submit","text":"Export XML for export declarations or JSON for imports. Submit to your national customs portal. Complete in under a minute."}]}</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --ink:#0A0F1E;--ink-2:#374151;--ink-3:#6B7280;--ink-4:#9CA3AF;
+      --blue:#1A56DB;--blue-dk:#1447BA;--blue-lt:#EEF2FF;--blue-md:#C7D7FD;
+      --green:#059669;--green-lt:#ECFDF5;--amber:#D97706;--red:#DC2626;
+      --white:#FFFFFF;--gray-50:#F8F9FC;--gray-100:#F3F4F6;--gray-200:#E5E7EB;
+      --gray-300:#D1D5DB;--hero-bg:#0B1525;--radius:10px;--radius-lg:16px;
+      --shadow-sm:0 1px 3px rgb(0 0 0/.07),0 1px 2px rgb(0 0 0/.04);
+      --shadow-md:0 4px 12px -2px rgb(0 0 0/.08),0 2px 6px -2px rgb(0 0 0/.04);
+      --shadow-lg:0 20px 32px -8px rgb(0 0 0/.10),0 8px 16px -4px rgb(0 0 0/.06);
+      --shadow-xl:0 32px 48px -12px rgb(0 0 0/.14),0 12px 20px -6px rgb(0 0 0/.08);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--white);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .container{max-width:1120px;margin:0 auto;padding:0 24px}
+
+    /* SCROLL PROGRESS */
+    #scroll-prog{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--blue),#6EA4FF);z-index:500;transition:width .08s linear;pointer-events:none}
+
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none;border:none;cursor:pointer;transition:background .15s,box-shadow .18s,transform .18s;white-space:nowrap;font-family:inherit;line-height:1.4}
+    .btn-primary{background:var(--blue);color:#fff}
+    .btn-primary:hover{background:var(--blue-dk);box-shadow:0 4px 16px rgb(26 86 219/.38);transform:translateY(-1px)}
+    .btn-secondary{background:var(--white);color:var(--ink);border:1.5px solid var(--gray-300)}
+    .btn-secondary:hover{background:var(--gray-50);box-shadow:var(--shadow-sm)}
+    .btn-ghost-white{background:transparent;color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.2)}
+    .btn-ghost-white:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.38)}
+
+    /* BADGE (replaces plain .label) */
+    .badge{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:9999px;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;background:var(--blue-lt);color:var(--blue);border:1px solid var(--blue-md);margin-bottom:14px}
+    .badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0}
+
+    /* ANIMATION SYSTEM */
+    @media(prefers-reduced-motion:no-preference){
+      [data-anim]{opacity:0;transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1),filter .6s ease;transition-delay:var(--dl,0ms)}
+      [data-anim="fade-up"]{transform:translateY(28px)}
+      [data-anim="fade-left"]{transform:translateX(-36px)}
+      [data-anim="fade-right"]{transform:translateX(36px)}
+      [data-anim="scale"]{transform:scale(.93);filter:blur(2px)}
+      [data-anim="blur-up"]{transform:translateY(20px);filter:blur(8px)}
+      [data-anim].in{opacity:1;transform:none;filter:none}
+    }
+
+    /* NAV */
+    #nav{position:fixed;top:0;left:0;right:0;z-index:300;transition:background .28s,border-color .28s,box-shadow .28s,backdrop-filter .28s;border-bottom:1px solid transparent}
+    #nav.at-top{background:transparent}
+    #nav.scrolled{background:rgba(255,255,255,.97);border-bottom-color:var(--gray-200);box-shadow:0 1px 10px rgb(0 0 0/.06);backdrop-filter:blur(12px)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .nav-wordmark{text-decoration:none;display:flex;align-items:baseline}
+    .nav-wordmark .w1{font-size:17px;font-weight:400;color:rgba(255,255,255,.55);transition:color .28s;letter-spacing:-.01em}
+    .nav-wordmark .w2{font-size:17px;font-weight:800;color:#fff;transition:color .28s;letter-spacing:-.03em}
+    #nav.scrolled .nav-wordmark .w1{color:var(--ink-4)}
+    #nav.scrolled .nav-wordmark .w2{color:var(--ink)}
+    .nav-links{display:flex;gap:26px;align-items:center}
+    .nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.7);text-decoration:none;transition:color .15s}
+    #nav.scrolled .nav-links a{color:var(--ink-2)}
+    .nav-links a:hover{color:#fff}
+    #nav.scrolled .nav-links a:hover{color:var(--ink)}
+    .nav-actions{display:flex;gap:8px;align-items:center}
+    .nav-login{font-size:14px;font-weight:500;color:rgba(255,255,255,.7);text-decoration:none;padding:7px 14px;border-radius:7px;transition:all .15s}
+    .nav-login:hover{color:#fff;background:rgba(255,255,255,.07)}
+    #nav.scrolled .nav-login{color:var(--ink-2)}
+    #nav.scrolled .nav-login:hover{color:var(--ink);background:var(--gray-50)}
+    .nav-cta{font-size:14px;font-weight:600;color:#fff;background:var(--blue);text-decoration:none;padding:7px 16px;border-radius:7px;transition:background .15s,box-shadow .15s,transform .15s}
+    .nav-cta:hover{background:var(--blue-dk);box-shadow:0 3px 10px rgb(26 86 219/.3);transform:translateY(-1px)}
+    .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:5px}
+    .nav-burger span{display:block;width:20px;height:1.5px;background:rgba(255,255,255,.8);border-radius:2px;transition:all .22s}
+    #nav.scrolled .nav-burger span{background:var(--ink-2)}
+    .nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+    .nav-burger.open span:nth-child(2){opacity:0}
+    .nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+    #mobile-nav{position:fixed;top:64px;left:0;right:0;z-index:299;background:var(--white);border-bottom:1px solid var(--gray-200);box-shadow:var(--shadow-md);display:none}
+    #mobile-nav.open{display:block}
+    .mobile-nav-inner{padding:8px 24px 20px;display:flex;flex-direction:column}
+    .mobile-nav-inner a{font-size:15px;font-weight:500;color:var(--ink-2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--gray-100)}
+    .mobile-nav-inner a:last-of-type{border-bottom:none}
+    .mobile-nav-ctas{display:flex;gap:10px;margin-top:14px}
+    .mobile-nav-ctas a{flex:1;justify-content:center}
+
+    /* HERO */
+    .hero{background:var(--hero-bg);padding:148px 0 96px;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 65% 70% at 80% 30%,rgba(26,86,219,.18) 0%,transparent 60%),radial-gradient(ellipse 35% 45% at 8% 85%,rgba(26,86,219,.08) 0%,transparent 60%);transform:translateY(var(--hero-parallax,0px));will-change:transform}
+    .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;position:relative}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:22px}
+    .hero-eyebrow::before{content:'';display:block;width:18px;height:1px;background:rgba(255,255,255,.22)}
+    .hero h1{font-size:clamp(34px,4.2vw,54px);font-weight:800;letter-spacing:-.035em;line-height:1.07;color:#fff;margin-bottom:22px}
+    .hero h1 em{font-style:normal;color:#6EA4FF}
+    .hero-sub{font-size:17px;color:#8899B0;line-height:1.72;margin-bottom:34px}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:44px}
+    .hero-proof{padding-top:28px;border-top:1px solid rgba(255,255,255,.07);display:flex;gap:36px;flex-wrap:wrap}
+    .hp-item{display:flex;flex-direction:column;gap:3px}
+    .hp-val{font-size:22px;font-weight:800;color:#fff;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+    .hp-lbl{font-size:12px;color:#4A5568;font-weight:500}
+
+    /* Terminal panel */
+    @keyframes panel-float{0%,100%{transform:translateY(0) rotate(-.4deg)}50%{transform:translateY(-10px) rotate(.2deg)}}
+    .hero-panel{background:#0D1117;border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 32px 72px -16px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.03);animation:panel-float 7s ease-in-out infinite;will-change:transform}
+    .panel-bar{display:flex;align-items:center;gap:6px;padding:11px 16px;background:#161B22;border-bottom:1px solid rgba(255,255,255,.055)}
+    .pd{width:11px;height:11px;border-radius:50%}
+    .panel-title{font-size:12px;color:#3D444D;margin-left:4px;font-family:'JetBrains Mono',monospace}
+    .panel-tag{margin-left:auto;font-size:11px;font-weight:600;background:rgba(26,86,219,.22);color:#6EA4FF;padding:2px 9px;border-radius:4px;font-family:'JetBrains Mono',monospace;letter-spacing:.04em}
+    .panel-body{padding:18px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.65}
+    .t-comment{color:#3D444D}.t-file{color:#3D444D;padding-left:12px}
+    .t-sep{height:1px;background:rgba(255,255,255,.045);margin:12px 0}
+    .t-head{color:#79C0FF;font-weight:500;font-size:11px;letter-spacing:.04em}
+    .t-row{display:grid;grid-template-columns:1fr 84px 52px 52px;gap:8px;align-items:baseline;padding:3px 0}
+    .t-desc{color:#3D444D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .t-code{color:#79C0FF}.t-ok{color:#56D364;font-weight:600}.t-warn{color:#E3B341;font-weight:600}
+    .t-alert{margin-top:12px;padding:9px 12px;background:rgba(227,179,65,.07);border:1px solid rgba(227,179,65,.18);border-radius:6px;font-size:11px;color:#E3B341;display:flex;gap:8px;line-height:1.5}
+    .t-out{margin-top:10px;font-size:11px}.t-ready{color:#56D364;font-weight:600}.t-fname{color:#3D444D}
+
+    /* SECTIONS */
+    section{padding:96px 0}.section-alt{background:var(--gray-50)}
+    .section-head{margin-bottom:52px}.section-head.center{text-align:center}.section-head.center p{margin:0 auto}
+    .section-head h2{font-size:clamp(26px,3.2vw,38px);font-weight:800;letter-spacing:-.028em;color:var(--ink);line-height:1.12;margin-bottom:13px}
+    .section-head p{font-size:16px;color:var(--ink-3);max-width:580px;line-height:1.65}
+
+    /* PROBLEM — Shadcn-style list items */
+    .prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .prob-card{border-radius:var(--radius-lg);padding:28px 24px;border:1px solid}
+    .prob-card.before{background:#FFFBFB;border-color:#FECDD3}
+    .prob-card.after{background:var(--green-lt);border-color:#A7F3D0}
+    .prob-card-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid}
+    .prob-card.before .prob-card-header{border-color:rgba(185,28,28,.12)}
+    .prob-card.after .prob-card-header{border-color:rgba(6,95,70,.12)}
+    .prob-card-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+    .prob-card.before .prob-card-dot{background:#EF4444}
+    .prob-card.after .prob-card-dot{background:var(--green)}
+    .prob-card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+    .prob-card.before .prob-card-title{color:#B91C1C}
+    .prob-card.after .prob-card-title{color:#065F46}
+    /* List items */
+    .prob-list{list-style:none;display:flex;flex-direction:column;gap:4px}
+    .prob-item{display:flex;align-items:flex-start;gap:12px;padding:11px 12px;border-radius:9px;transition:background .15s;cursor:default}
+    .prob-card.before .prob-item:hover{background:rgba(239,68,68,.06)}
+    .prob-card.after .prob-item:hover{background:rgba(5,150,105,.06)}
+    .prob-icon{flex-shrink:0;width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+    .prob-icon.no{background:rgba(239,68,68,.1);color:#DC2626;border:1px solid rgba(239,68,68,.2)}
+    .prob-icon.yes{background:rgba(5,150,105,.1);color:#059669;border:1px solid rgba(5,150,105,.2)}
+    .prob-item-text{font-size:13.5px;color:var(--ink-2);line-height:1.6;padding-top:4px}
+
+    /* HOW IT WORKS */
+    .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--gray-200);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--gray-200)}
+    .step{background:var(--white);padding:30px 24px;display:flex;flex-direction:column;gap:12px;transition:background .18s,box-shadow .18s}
+    .step:hover{background:var(--gray-50)}
+    .step-n{width:34px;height:34px;border-radius:9px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;transition:background .2s,transform .2s;box-shadow:0 2px 6px rgb(0 0 0/.15)}
+    .step:hover .step-n{background:var(--blue);transform:scale(1.08)}
+    .step h3{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+    .step p{font-size:13px;color:var(--ink-3);line-height:1.6}
+
+    /* FEATURES — Shadcn Card-style */
+    .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-200);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--gray-200)}
+    .feat{background:var(--white);padding:30px;display:flex;flex-direction:column;gap:12px;transition:background .18s,box-shadow .18s,transform .18s;position:relative;z-index:0}
+    .feat:hover{background:var(--white);box-shadow:0 8px 28px -4px rgb(0 0 0/.09),0 2px 8px -2px rgb(0 0 0/.05);transform:translateY(-3px) scale(1.005);z-index:2;border-radius:var(--radius)}
+    .feat-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--blue-lt) 0%,#DDE8FF 100%);border:1px solid var(--blue-md);display:flex;align-items:center;justify-content:center;color:var(--blue);flex-shrink:0;box-shadow:0 2px 6px rgb(26 86 219/.1)}
+    .feat h3{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+    .feat p{font-size:13px;color:var(--ink-3);line-height:1.65;flex-grow:1}
+    .feat-bullets{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:2px}
+    .feat-bullets li{font-size:12px;color:var(--ink-2);display:flex;align-items:flex-start;gap:8px;line-height:1.4}
+    .feat-bullets li::before{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:5px;opacity:.6}
+
+    /* COMPARISON */
+    .tbl-wrap{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--gray-200);box-shadow:var(--shadow-sm)}
+    .cmp{width:100%;border-collapse:collapse;font-size:13px}
+    .cmp thead th{padding:13px 15px;text-align:center;font-weight:700;font-size:12px;background:var(--gray-50);color:var(--ink-2);border-bottom:1px solid var(--gray-200)}
+    .cmp thead th:first-child{text-align:left}
+    .cmp thead th.hl{background:var(--blue-lt);color:var(--blue)}
+    .cmp tbody tr{border-bottom:1px solid var(--gray-100)}
+    .cmp tbody tr:last-child{border-bottom:none}
+    .cmp tbody tr:hover td{background:var(--gray-50)}
+    .cmp tbody td{padding:12px 15px;color:var(--ink-2);background:var(--white)}
+    .cmp tbody td:first-child{font-weight:500;color:var(--ink)}
+    .cmp tbody td.c{text-align:center}
+    .cy{color:var(--green);font-size:15px;font-weight:700}
+    .cn{color:var(--gray-300);font-size:15px}
+    .cp{color:var(--amber);font-size:11px;font-weight:700;letter-spacing:.02em}
+    .cmp-legend{text-align:center;margin-top:12px;font-size:12px;color:var(--ink-4)}
+
+    /* FAQ — smooth open animation */
+    .faq-list{max-width:740px;margin:0 auto;display:flex;flex-direction:column;gap:7px}
+    .faq-item{border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;transition:border-color .2s}
+    .faq-item[open]{border-color:var(--blue-md)}
+    .faq-q{list-style:none;padding:17px 20px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:600;font-size:14px;color:var(--ink);background:var(--white);user-select:none;gap:12px;transition:background .15s}
+    .faq-q:hover{background:var(--gray-50)}
+    .faq-q::marker,.faq-q::-webkit-details-marker{display:none}
+    .faq-icon{font-size:18px;color:var(--blue);flex-shrink:0;transition:transform .25s cubic-bezier(.4,0,.2,1);line-height:1}
+    details[open] .faq-icon{transform:rotate(45deg)}
+    .faq-a{padding:2px 20px 17px;font-size:14px;color:var(--ink-2);line-height:1.72}
+    @keyframes faq-slide-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+    details[open] .faq-a{animation:faq-slide-in .24s ease}
+
+    /* DEMO FORM */
+    .demo-section{background:var(--gray-50)}
+    .demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+    .demo-copy h2{font-size:clamp(24px,2.8vw,34px);font-weight:800;letter-spacing:-.025em;color:var(--ink);line-height:1.15;margin-bottom:14px}
+    .demo-copy p{font-size:15px;color:var(--ink-3);line-height:1.7;margin-bottom:26px}
+    .demo-points{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .demo-points li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--ink-2);line-height:1.5}
+    .demo-points li::before{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:7px}
+    .demo-form{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:34px;box-shadow:var(--shadow-md)}
+    .demo-form h3{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:22px;letter-spacing:-.015em}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+    .form-label{font-size:12px;font-weight:600;color:var(--ink-2)}
+    .form-input,.form-select,.form-textarea{width:100%;padding:9px 12px;border:1.5px solid var(--gray-200);border-radius:8px;font-size:14px;color:var(--ink);font-family:inherit;background:var(--white);outline:none;appearance:none;transition:border-color .15s,box-shadow .15s}
+    .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgb(26 86 219/.12)}
+    .form-input::placeholder,.form-textarea::placeholder{color:var(--gray-300)}
+    .form-textarea{resize:vertical;min-height:84px}
+    .form-submit{width:100%;padding:11px;margin-top:4px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .15s,box-shadow .18s,transform .18s}
+    .form-submit:hover{background:var(--blue-dk);box-shadow:0 4px 16px rgb(26 86 219/.32);transform:translateY(-1px)}
+    .form-note{font-size:12px;color:var(--ink-4);text-align:center;margin-top:11px}
+
+    /* FINAL CTA */
+    .cta-section{background:var(--hero-bg);padding:88px 0;text-align:center;position:relative;overflow:hidden}
+    .cta-section::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 70% at 50% 50%,rgba(26,86,219,.18) 0%,transparent 65%)}
+    .cta-section .container{position:relative}
+    .cta-section h2{font-size:clamp(26px,3.5vw,40px);font-weight:800;color:#fff;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
+    .cta-section p{font-size:16px;color:#4A5568;max-width:440px;margin:0 auto 32px;line-height:1.6}
+    .cta-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .cta-note{font-size:12px;color:#1E2D3D;margin-top:18px;letter-spacing:.02em}
+
+    /* FOOTER */
+    footer{background:#060B14;padding:52px 0 26px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:44px}
+    .footer-wordmark{text-decoration:none;display:flex;align-items:baseline;margin-bottom:13px}
+    .footer-wordmark .w1{font-size:15px;font-weight:400;color:#2A3A4A}
+    .footer-wordmark .w2{font-size:15px;font-weight:800;color:#344155;letter-spacing:-.02em}
+    .footer-brand p{font-size:13px;color:#2A3A4A;line-height:1.65;max-width:255px}
+    .footer-col h4{font-size:11px;font-weight:700;color:#2A3A4A;text-transform:uppercase;letter-spacing:.1em;margin-bottom:13px}
+    .footer-col a{display:block;font-size:13px;color:#2A3A4A;text-decoration:none;margin-bottom:9px;transition:color .15s}
+    .footer-col a:hover{color:#64748B}
+    .footer-bottom{border-top:1px solid #0C1620;padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+    .footer-copy{font-size:12px;color:#1A2535}
+    .footer-tags{display:flex;gap:12px}
+    .footer-tag{font-size:11px;color:#1A2535;font-weight:600}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){.feat-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr;gap:36px}.demo-grid{grid-template-columns:1fr;gap:44px}}
+    @media(max-width:768px){
+      .hero{padding:116px 0 68px}.hero-inner{grid-template-columns:1fr}.hero-panel{display:none}
+      .prob-grid{grid-template-columns:1fr}.steps-grid{grid-template-columns:repeat(2,1fr)}
+      .feat-grid{grid-template-columns:1fr}.nav-links,.nav-actions{display:none}.nav-burger{display:flex}
+      .footer-grid{grid-template-columns:1fr;gap:28px}
+    }
+    @media(max-width:480px){
+      .steps-grid{grid-template-columns:1fr}.hero-actions{flex-direction:column;align-items:flex-start}
+      .cta-actions{flex-direction:column;align-items:center}.hero-proof{gap:20px}
+      section{padding:68px 0}.form-row{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<div id="scroll-prog" aria-hidden="true"></div>
+
+<nav id="nav" class="at-top" role="navigation" aria-label="Main navigation">
+  <div class="container nav-inner">
+    <a href="/" class="nav-wordmark" aria-label="Customs Monster home"><span class="w1">Customs</span><span class="w2">Monster</span></a>
+    <div class="nav-links" role="menubar">
+      <a href="#how-it-works">How It Works</a>
+      <a href="#features">Features</a>
+      <a href="#compare">Compare</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-actions">
+      <a href="#demo" class="nav-login">Sign in</a>
+      <a href="#demo" class="nav-cta">Book a demo</a>
+    </div>
+    <button class="nav-burger" id="nav-burger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div id="mobile-nav" role="navigation" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="mobile-nav-inner">
+    <a href="#how-it-works">How It Works</a>
+    <a href="#features">Features</a>
+    <a href="#compare">Compare</a>
+    <a href="#faq">FAQ</a>
+    <div class="mobile-nav-ctas">
+      <a href="#demo" class="btn btn-secondary" style="font-size:14px;">Sign in</a>
+      <a href="#demo" class="btn btn-primary" style="font-size:14px;">Book a demo</a>
+    </div>
+  </div>
+</div>
+
+<header class="hero" role="banner">
+  <div class="container hero-inner">
+    <div>
+      <div class="hero-eyebrow">EU Customs Declaration Software</div>
+      <h1 data-anim="blur-up">Turn shipping documents into <em>filed customs declarations</em></h1>
+      <p class="hero-sub" data-anim="fade-up" style="--dl:120ms">Customs Monster reads your shipment documents, extracts every data field, classifies goods to the correct TARIC code, and outputs an EDS-ready file. Your team reviews the work. Not the data entry.</p>
+      <div class="hero-actions" data-anim="fade-up" style="--dl:200ms">
+        <a href="#demo" class="btn btn-primary" style="padding:12px 28px;font-size:15px;">Book a demo</a>
+        <a href="#how-it-works" class="btn btn-ghost-white" style="padding:12px 28px;font-size:15px;">See how it works</a>
+      </div>
+      <div class="hero-proof" data-anim="fade-up" style="--dl:300ms">
+        <div class="hp-item"><span class="hp-val"><span data-counter="60" data-suffix=" sec">60 sec</span></span><span class="hp-lbl">Avg. declaration time</span></div>
+        <div class="hp-item"><span class="hp-val"><span data-counter="10" data-suffix="+ formats">10+ formats</span></span><span class="hp-lbl">No templates required</span></div>
+        <div class="hp-item"><span class="hp-val">Live</span><span class="hp-lbl">EU production since Sept 2025</span></div>
+      </div>
+    </div>
+    <div class="hero-panel" aria-hidden="true" data-anim="fade-left" style="--dl:80ms">
+      <div class="panel-bar">
+        <div class="pd" style="background:#FF5F57"></div>
+        <div class="pd" style="background:#FEBC2E"></div>
+        <div class="pd" style="background:#28C840"></div>
+        <span class="panel-title">cm classify --input ./shipment-2026-0084</span>
+        <span class="panel-tag">IMPORT</span>
+      </div>
+      <div class="panel-body">
+        <div class="t-comment"># Reading documents...</div>
+        <div class="t-file">invoice_YSK-2026-0084.pdf</div>
+        <div class="t-file">awb_UPS-4892003.pdf</div>
+        <div class="t-file">packing_list.xlsx</div>
+        <div class="t-file">delivery_note.pdf</div>
+        <div class="t-sep"></div>
+        <div class="t-head">CLASSIFICATION RESULTS</div>
+        <div style="margin-top:6px">
+          <div class="t-row"><span class="t-desc">Servo motor SGMAH-04ACA21</span><span class="t-code">8501.52.20</span><span class="t-ok">98.4%</span><span class="t-ok">OK</span></div>
+          <div class="t-row"><span class="t-desc">Drive controller SGDV-R70A</span><span class="t-code">8504.40.88</span><span class="t-ok">95.1%</span><span class="t-ok">OK</span></div>
+          <div class="t-row"><span class="t-desc">Encoder cable assembly 10m</span><span class="t-code">8544.42.90</span><span class="t-warn">81.7%</span><span class="t-warn">REVIEW</span></div>
+          <div class="t-row"><span class="t-desc">Mounting bracket, steel</span><span class="t-code">7326.90.98</span><span class="t-ok">99.0%</span><span class="t-ok">OK</span></div>
+        </div>
+        <div class="t-sep"></div>
+        <div class="t-alert"><span>!</span><span>CONFLICT: consignee_address differs between INVOICE and AWB. Review before export.</span></div>
+        <div class="t-out"><span class="t-ready">Ready: </span><span class="t-fname">declaration-2026-0084.xml</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="problem" aria-labelledby="prob-h">
+  <div class="container">
+    <div class="section-head" data-anim="fade-up">
+      <span class="badge">The Problem</span>
+      <h2 id="prob-h">Manual declarations are your most expensive bottleneck</h2>
+      <p>Each shipment means opening 3 to 5 documents separately, hunting for the right TARIC code, re-typing fields by hand, and hoping nothing was missed.</p>
+    </div>
+    <div class="prob-grid">
+      <article class="prob-card before" data-anim="fade-left" aria-label="Manual process problems">
+        <div class="prob-card-header">
+          <span class="prob-card-dot"></span>
+          <span class="prob-card-title">Before: Manual processing</span>
+        </div>
+        <ul class="prob-list" role="list">
+          <li class="prob-item">
+            <span class="prob-icon no" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></span>
+            <span class="prob-item-text">Switch between invoice, AWB, packing list, and delivery note to find each value</span>
+          </li>
+          <li class="prob-item">
+            <span class="prob-icon no" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></span>
+            <span class="prob-item-text">Re-type weights, values, and part numbers by hand, introducing transcription errors</span>
+          </li>
+          <li class="prob-item">
+            <span class="prob-icon no" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></span>
+            <span class="prob-item-text">Spend 20 to 40 minutes hunting the correct TARIC code per shipment</span>
+          </li>
+          <li class="prob-item">
+            <span class="prob-icon no" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></span>
+            <span class="prob-item-text">Translate product descriptions manually for customs requirements</span>
+          </li>
+          <li class="prob-item">
+            <span class="prob-icon no" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></span>
+            <span class="prob-item-text">Document conflicts surface at customs review, not before submission</span>
+          </li>
+        </ul>
+      </article>
+      <article class="prob-card after" data-anim="fade-right" aria-label="Customs Monster solution">
+        <div class="prob-card-header">
+          <span class="prob-card-dot"></span>
+          <span class="prob-card-title">After: Customs Monster</span>
+        </div>
+        <ul class="prob-list" role="list">
+          <li class="prob-item">
+            <span class="prob-icon yes" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span>
+            <span class="prob-item-text">Upload all documents at once. Any format, any language, any layout</span>
+          </li>
+          <li class="prob-item">
+            <span class="prob-icon yes" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span>
+            <span class="prob-item-text">Every field extracted simultaneously. Discrepancies flagged automatically with source identified</span>
+          </li>
+          <li class="prob-item">
+            <span class="prob-icon yes" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span>
+            <span class="prob-item-text">TARIC codes assigned with a confidence score and written explanation per line item</span>
+          </li>
+          <li class="prob-item">
+            <span class="prob-icon yes" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span>
+            <span class="prob-item-text">Product descriptions translated automatically for customs filing</span>
+          </li>
+          <li class="prob-item">
+            <span class="prob-icon yes" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span>
+            <span class="prob-item-text">Conflicts flagged before submission. EDS-ready output in one click</span>
+          </li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works" class="section-alt" aria-labelledby="hiw-h">
+  <div class="container">
+    <div class="section-head center" data-anim="fade-up">
+      <span class="badge">How It Works</span>
+      <h2 id="hiw-h">Four steps. One workflow.</h2>
+      <p>No data re-entry. No spreadsheets. No manual TARIC lookup. Upload your documents, review the output, submit.</p>
+    </div>
+    <div class="steps-grid" role="list" data-stagger>
+      <article class="step" role="listitem"><div class="step-n">1</div><h3>Upload Documents</h3><p>Drop your invoice, AWB, packing list, or any other shipping documents. PDF, Excel, images, XML. No templates, no reformatting required.</p></article>
+      <article class="step" role="listitem"><div class="step-n">2</div><h3>Extract and Flag</h3><p>Every field is pulled from every document simultaneously. Where documents disagree on a value, the conflict is flagged with the source document identified.</p></article>
+      <article class="step" role="listitem"><div class="step-n">3</div><h3>Review Classifications</h3><p>Each product line arrives with a TARIC code, confidence score, and written explanation. Accept, reject, or override any result before finalising.</p></article>
+      <article class="step" role="listitem"><div class="step-n">4</div><h3>Download and Submit</h3><p>Export EDS-ready XML for exports or JSON for imports. Submit to your national customs portal. Complete in minutes, not hours.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="features" aria-labelledby="feat-h">
+  <div class="container">
+    <div class="section-head center" data-anim="fade-up">
+      <span class="badge">Platform Features</span>
+      <h2 id="feat-h">Built for the way customs brokers actually work</h2>
+      <p>Not a generic trade compliance tool adapted for brokers. Purpose-built for the EU customs declaration workflow from day one.</p>
+    </div>
+    <div class="feat-grid" role="list" data-stagger>
+      <article class="feat" role="listitem">
+        <div class="feat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <h3>Universal Document Extraction</h3>
+        <p>Reads any document format without templates. Supplier invoices in Japanese, German, or Chinese. Carrier AWBs from any provider. No setup required for new document types.</p>
+        <ul class="feat-bullets"><li>PDF, Excel, OpenDocument, images, XML</li><li>Any language, any layout, any country of origin</li><li>Multi-document processing in a single upload</li></ul>
+      </article>
+      <article class="feat" role="listitem">
+        <div class="feat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <h3>TARIC Classification with Explanations</h3>
+        <p>Every classification includes a confidence score and a written explanation of why the heading applies. Not just the code: the reasoning. Useful for training junior brokers and defending classifications under audit.</p>
+        <ul class="feat-bullets"><li>Confidence score per line item</li><li>Plain-language classification rationale</li><li>Alternative codes shown when ambiguous</li></ul>
+      </article>
+      <article class="feat" role="listitem">
+        <div class="feat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></div>
+        <h3>Cross-Document Conflict Resolution</h3>
+        <p>When two documents carry different values for the same field, the conflict is flagged. Both values are shown alongside their source documents. The most common cause of customs rejection, caught before submission.</p>
+        <ul class="feat-bullets"><li>Field-level conflict detection across all uploads</li><li>Source document identified per conflicting value</li><li>Review required before declaration can be finalised</li></ul>
+      </article>
+      <article class="feat" role="listitem">
+        <div class="feat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <h3>Self-Improving Knowledge Base</h3>
+        <p>Every accepted or rejected classification trains the system. Your product-to-TARIC mapping improves with each declaration. Recurring products get faster and more accurate over time.</p>
+        <ul class="feat-bullets"><li>Learns from every broker accept or reject decision</li><li>Usage counts and confidence tracking per mapping</li><li>Bulk import from Excel for initial setup</li></ul>
+      </article>
+      <article class="feat" role="listitem">
+        <div class="feat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+        <h3>EDS-Ready Output</h3>
+        <p>XML for export declarations, JSON for import declarations, formatted for your national EU customs portal. No reformatting. No manual conversion. Download and submit directly.</p>
+        <ul class="feat-bullets"><li>XML output for export declarations (EDS format)</li><li>JSON output for import declarations</li><li>EU member state customs systems compatible</li></ul>
+      </article>
+      <article class="feat" role="listitem">
+        <div class="feat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Role-Based Team Access</h3>
+        <p>Multi-user access with USER, ADMIN, and TECH roles. Admins see all declarations across the team. Brokers see their own. Full audit trail on every declaration action.</p>
+        <ul class="feat-bullets"><li>USER, ADMIN, TECH permission levels</li><li>Team-wide declaration visibility for admins</li><li>Full audit trail per declaration</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="compare" class="section-alt" aria-labelledby="cmp-h">
+  <div class="container">
+    <div class="section-head center" data-anim="fade-up">
+      <span class="badge">Comparison</span>
+      <h2 id="cmp-h">The only tool that covers the full declaration workflow</h2>
+      <p>Other tools automate one part of the process. Customs Monster covers the entire chain from raw documents to filed declaration.</p>
+    </div>
+    <div class="tbl-wrap" data-anim="scale">
+      <table class="cmp" role="table" aria-label="Feature comparison: Customs Monster vs competitors">
+        <caption class="sr-only">Feature comparison between Customs Monster and competitor EU customs declaration software</caption>
+        <thead>
+          <tr>
+            <th scope="col" style="min-width:220px;text-align:left;">Capability</th>
+            <th scope="col" class="hl" style="min-width:130px;">Customs Monster</th>
+            <th scope="col" style="min-width:100px;">Digicust</th>
+            <th scope="col" style="min-width:100px;">iCustoms</th>
+            <th scope="col" style="min-width:100px;">Customs4trade</th>
+            <th scope="col" style="min-width:100px;">traide.ai</th>
+            <th scope="col" style="min-width:100px;">Legacy tools</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>AI document extraction, any format, no templates</td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cp">PARTIAL</span></td><td class="c"><span class="cn">&#10005;</span></td><td class="c"><span class="cn">&#10005;</span></td></tr>
+          <tr><td>TARIC classification with confidence scores</td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cn">&#10005;</span></td></tr>
+          <tr><td>Written classification explanations per line item</td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cn">&#10005;</span></td><td class="c"><span class="cn">&#10005;</span></td><td class="c"><span class="cn">&#10005;</span></td><td class="c"><span class="cp">PARTIAL</span></td><td class="c"><span class="cn">&#10005;</span></td></tr>
+          <tr><td>Cross-document conflict detection and resolution</td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cn">&#10005;</span></td><td class="c"><span class="cn">&#10005;</span></td><td class="c"><span class="cn">&#10005;</span></td><td class="c"><span class="cn">&#10005;</span></td><td class="c"><span class="cn">&#10005;</span></td></tr>
+          <tr><td>Self-improving classification knowledge base</td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cn">&#10005;</span></td><td class="c"><span class="cn">&#10005;</span></td><td class="c"><span class="cn">&#10005;</span></td><td class="c"><span class="cn">&#10005;</span></td><td class="c"><span class="cn">&#10005;</span></td></tr>
+          <tr><td>EDS-ready XML and JSON output</td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cn">&#10005;</span></td><td class="c"><span class="cp">PARTIAL</span></td></tr>
+          <tr><td>Built specifically for EU customs brokers</td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cp">PARTIAL</span></td><td class="c"><span class="cy">&#10003;</span></td><td class="c"><span class="cp">PARTIAL</span></td><td class="c"><span class="cp">PARTIAL</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cmp-legend">&#10003; Full support &nbsp;&nbsp; PARTIAL Partial or limited &nbsp;&nbsp; &#10005; Not available</p>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="faq-h">
+  <div class="container">
+    <div class="section-head center" data-anim="fade-up">
+      <span class="badge">FAQ</span>
+      <h2 id="faq-h">Common questions</h2>
+    </div>
+    <div class="faq-list" data-stagger>
+      <details class="faq-item"><summary class="faq-q">What is Customs Monster?<span class="faq-icon" aria-hidden="true">+</span></summary><div class="faq-a">Customs Monster is EU customs declaration software for customs brokers. It reads your shipping documents, extracts every relevant field, classifies goods to TARIC codes with confidence scores and written explanations, and outputs EDS-ready XML or JSON for submission to your national customs portal. It handles the data work. Your brokers handle the review.</div></details>
+      <details class="faq-item"><summary class="faq-q">Which document formats are supported?<span class="faq-icon" aria-hidden="true">+</span></summary><div class="faq-a">PDF, Excel (.xls, .xlsx, .xlsm, .xlsb), OpenDocument (.odf, .ods, .odt), images (.jpg, .jpeg, .png, .tiff), and XML. No reformatting or templates required. Upload documents in whatever format you receive them, including documents in any language.</div></details>
+      <details class="faq-item"><summary class="faq-q">How does the TARIC classification work?<span class="faq-icon" aria-hidden="true">+</span></summary><div class="faq-a">The system reads product descriptions from all uploaded documents, cross-references the EU TARIC tariff database, and returns the most appropriate code with a confidence score and a written explanation of why the heading applies. Brokers accept, reject, or override any result. Each decision trains the knowledge base for future declarations involving similar products.</div></details>
+      <details class="faq-item"><summary class="faq-q">What happens when documents have conflicting data?<span class="faq-icon" aria-hidden="true">+</span></summary><div class="faq-a">When two documents carry different values for the same field, the conflict is flagged with both values shown alongside their source documents. The broker selects the correct value before the declaration is finalised. This catches the discrepancies that most commonly cause customs rejection. The issue is visible before submission, not after.</div></details>
+      <details class="faq-item"><summary class="faq-q">Which EU countries and customs systems does it support?<span class="faq-icon" aria-hidden="true">+</span></summary><div class="faq-a">Currently integrated with Latvia's EDS (Electronic Declaration System) for both import and export declarations. Output is XML for exports and JSON for imports. The platform is built for expansion to additional EU member state systems. Contact us to discuss your country's requirements.</div></details>
+      <details class="faq-item"><summary class="faq-q">What trade corridors and product types has it been tested on?<span class="faq-icon" aria-hidden="true">+</span></summary><div class="faq-a">Customs Monster is live in production handling EU trade corridors including Japan, Germany, Brazil, and the USA. It has been tested on industrial equipment, precision electronics, raw materials, and consumer goods. The AI reads supplier documents in any language.</div></details>
+      <details class="faq-item"><summary class="faq-q">Is the data GDPR compliant?<span class="faq-icon" aria-hidden="true">+</span></summary><div class="faq-a">The platform operates within EU infrastructure. Your shipping documents and declaration data are not used to train AI models. Data is fully isolated per organisation account. GDPR compliance is a primary design constraint, not a checklist item.</div></details>
+      <details class="faq-item"><summary class="faq-q">Is it compliant with EU Union Customs Code requirements?<span class="faq-icon" aria-hidden="true">+</span></summary><div class="faq-a">Yes. Customs Monster is built around the requirements of the EU Union Customs Code (UCC) and the TARIC integrated tariff for both import and export declarations. Output files are formatted for submission to national EU customs filing portals.</div></details>
+    </div>
+  </div>
+</section>
+
+<section id="demo" class="demo-section" aria-labelledby="demo-h">
+  <div class="container">
+    <div class="demo-grid">
+      <div data-anim="fade-right">
+        <span class="badge">Book a Demo</span>
+        <div class="demo-copy">
+          <h2 id="demo-h">See it on your own documents</h2>
+          <p>A 30-minute live session on a real shipment from your workflow. Not a scripted walkthrough.</p>
+        </div>
+        <ul class="demo-points">
+          <li>Live run on documents you bring</li>
+          <li>TARIC classification with explanations in real time</li>
+          <li>Full walkthrough: upload, review, EDS output</li>
+          <li>Discussion of your trade corridors and product types</li>
+          <li>No commitment required before or after</li>
+        </ul>
+      </div>
+      <div data-anim="fade-left" style="--dl:100ms">
+        <form class="demo-form" name="demo-request" aria-label="Request a demo">
+          <h3>Request a demo</h3>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label" for="fn">First name</label><input class="form-input" type="text" id="fn" name="first_name" required autocomplete="given-name" placeholder="First name" /></div>
+            <div class="form-group"><label class="form-label" for="ln">Last name</label><input class="form-input" type="text" id="ln" name="last_name" required autocomplete="family-name" placeholder="Last name" /></div>
+          </div>
+          <div class="form-group"><label class="form-label" for="co">Company</label><input class="form-input" type="text" id="co" name="company" required autocomplete="organization" placeholder="Your brokerage or company" /></div>
+          <div class="form-group"><label class="form-label" for="em">Work email</label><input class="form-input" type="email" id="em" name="email" required autocomplete="email" placeholder="you@company.eu" /></div>
+          <div class="form-group">
+            <label class="form-label" for="cn">Country</label>
+            <select class="form-select" id="cn" name="country">
+              <option value="">Select country</option>
+              <option>Latvia</option><option>Lithuania</option><option>Estonia</option>
+              <option>Germany</option><option>Poland</option><option>Netherlands</option>
+              <option>Belgium</option><option>France</option><option>Other EU country</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label" for="msg">Anything useful to know (optional)</label><textarea class="form-textarea" id="msg" name="message" placeholder="Trade corridors, product types, current tools, weekly declaration volume"></textarea></div>
+          <button type="submit" class="form-submit">Request a demo</button>
+          <p class="form-note">We respond within one business day.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" aria-labelledby="cta-h">
+  <div class="container">
+    <h2 id="cta-h" data-anim="blur-up">Stop manually entering shipping data</h2>
+    <p data-anim="fade-up" style="--dl:100ms">Book a 30-minute demo. We run Customs Monster live on one of your own shipments.</p>
+    <div class="cta-actions" data-anim="fade-up" style="--dl:200ms">
+      <a href="#demo" class="btn btn-primary" style="padding:12px 28px;font-size:15px;">Book a demo</a>
+      <a href="mailto:hello@customsmonster.eu" class="btn btn-ghost-white" style="padding:12px 28px;font-size:15px;">hello@customsmonster.eu</a>
+    </div>
+    <p class="cta-note" data-anim="fade-up" style="--dl:300ms">EU UCC compliant &nbsp;|&nbsp; GDPR ready &nbsp;|&nbsp; Anthropic Claude AI &nbsp;|&nbsp; Live in production</p>
+  </div>
+</section>
+
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="footer-wordmark" aria-label="Customs Monster home"><span class="w1">Customs</span><span class="w2">Monster</span></a>
+        <p>EU customs declaration software for brokers. AI document extraction, TARIC classification, EDS-ready output. Built on Anthropic Claude. Expanding across Europe.</p>
+      </div>
+      <nav class="footer-col" aria-label="Product"><h4>Product</h4><a href="#features">Features</a><a href="#how-it-works">How It Works</a><a href="#compare">Compare</a><a href="#faq">FAQ</a></nav>
+      <nav class="footer-col" aria-label="Compliance"><h4>Compliance</h4><a href="#faq">EU Union Customs Code</a><a href="#faq">TARIC Classification</a><a href="#faq">EDS Integration</a><a href="#faq">GDPR</a></nav>
+      <nav class="footer-col" aria-label="Company"><h4>Company</h4><a href="https://balticai.eu" target="_blank" rel="noopener noreferrer">Baltic AI</a><a href="mailto:hello@customsmonster.eu">Contact</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></nav>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">2026 Baltic AI. All rights reserved.</p>
+      <div class="footer-tags"><span class="footer-tag">EU UCC</span><span class="footer-tag">GDPR</span><span class="footer-tag">Anthropic Claude</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── NAV SCROLL ── */
+(function(){
+  var nav=document.getElementById('nav');
+  function tick(){window.scrollY>20?nav.classList.replace('at-top','scrolled'):nav.classList.replace('scrolled','at-top')}
+  tick();window.addEventListener('scroll',tick,{passive:true});
+})();
+
+/* ── MOBILE NAV ── */
+(function(){
+  var burger=document.getElementById('nav-burger'),mNav=document.getElementById('mobile-nav'),open=false;
+  function toggle(){
+    open=!open;burger.classList.toggle('open',open);mNav.classList.toggle('open',open);
+    burger.setAttribute('aria-expanded',String(open));mNav.setAttribute('aria-hidden',String(!open));
+    if(open)document.getElementById('nav').classList.replace('at-top','scrolled');
+  }
+  burger.addEventListener('click',toggle);
+  mNav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){if(open)toggle()})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&open)toggle()});
+})();
+
+/* ── SCROLL PROGRESS BAR ── */
+(function(){
+  var bar=document.getElementById('scroll-prog');
+  if(!bar)return;
+  window.addEventListener('scroll',function(){
+    var pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;
+    bar.style.width=Math.min(pct,100)+'%';
+  },{passive:true});
+})();
+
+/* ── HERO PARALLAX (background gradient only) ── */
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var hero=document.querySelector('.hero');
+  if(!hero)return;
+  window.addEventListener('scroll',function(){
+    if(window.scrollY<hero.offsetHeight){
+      hero.style.setProperty('--hero-parallax',-(window.scrollY*0.12)+'px');
+    }
+  },{passive:true});
+})();
+
+/* ── ANIMATION SYSTEM ── */
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    document.querySelectorAll('[data-anim]').forEach(function(el){el.style.opacity='1'});
+    return;
+  }
+
+  /* Auto-stagger children of [data-stagger] */
+  document.querySelectorAll('[data-stagger]').forEach(function(parent){
+    Array.from(parent.children).forEach(function(child,i){
+      if(!child.hasAttribute('data-anim'))child.setAttribute('data-anim','fade-up');
+      child.style.setProperty('--dl',(i*80)+'ms');
+    });
+  });
+
+  /* Observe all [data-anim] elements */
+  var els=document.querySelectorAll('[data-anim]');
+  if(!els.length)return;
+  if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('in')});return;}
+
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}
+    });
+  },{threshold:0.07,rootMargin:'0px 0px -24px 0px'});
+
+  els.forEach(function(el){obs.observe(el);});
+})();
+
+/* ── COUNTER ANIMATION ── */
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var counters=document.querySelectorAll('[data-counter]');
+  if(!counters.length)return;
+
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(!entry.isIntersecting)return;
+      var el=entry.target;
+      var target=parseInt(el.dataset.counter,10);
+      var suffix=el.dataset.suffix||'';
+      var dur=1400;
+      var startTime=null;
+      function step(ts){
+        if(!startTime)startTime=ts;
+        var progress=Math.min((ts-startTime)/dur,1);
+        /* ease-out cubic */
+        var eased=1-Math.pow(1-progress,3);
+        el.textContent=Math.round(eased*target)+suffix;
+        if(progress<1)requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      obs.unobserve(el);
+    });
+  },{threshold:0.5});
+
+  counters.forEach(function(el){obs.observe(el);});
+})();
+</script>
+</body>
+</html>
