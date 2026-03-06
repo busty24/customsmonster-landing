@@ -320,7 +320,7 @@
         <a href="#how-it-works" class="btn btn-ghost-white" style="padding:12px 28px;font-size:15px;">See how it works</a>
       </div>
       <div class="hero-proof" data-anim="fade-up" style="--dl:300ms">
-        <div class="hp-item"><span class="hp-val"><span data-counter="60" data-suffix=" sec">60 sec</span></span><span class="hp-lbl">Avg. declaration time</span></div>
+        <div class="hp-item"><span class="hp-val"><span data-counter="60" data-from="90" data-suffix=" sec">60 sec</span></span><span class="hp-lbl">Avg. declaration time</span></div>
         <div class="hp-item"><span class="hp-val"><span data-counter="10" data-suffix="+ formats">10+ formats</span></span><span class="hp-lbl">No templates required</span></div>
         <div class="hp-item"><span class="hp-val">Live</span><span class="hp-lbl">EU production since Sept 2025</span></div>
       </div>
@@ -699,15 +699,19 @@
       if(!entry.isIntersecting)return;
       var el=entry.target;
       var target=parseInt(el.dataset.counter,10);
+      var from=el.dataset.from!==undefined?parseInt(el.dataset.from,10):null;
       var suffix=el.dataset.suffix||'';
-      var dur=1400;
+      var dur=2800;
       var startTime=null;
       function step(ts){
         if(!startTime)startTime=ts;
         var progress=Math.min((ts-startTime)/dur,1);
         /* ease-out cubic */
         var eased=1-Math.pow(1-progress,3);
-        el.textContent=Math.round(eased*target)+suffix;
+        var val=from!==null
+          ?Math.round(from-eased*(from-target))
+          :Math.round(eased*target);
+        el.textContent=val+suffix;
         if(progress<1)requestAnimationFrame(step);
       }
       requestAnimationFrame(step);
